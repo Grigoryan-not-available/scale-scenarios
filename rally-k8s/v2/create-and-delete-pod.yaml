@@ -6,6 +6,15 @@ subtasks:
   scenario:
     Kubernetes.create_and_delete_pod:
       image: {{ image_pause }}
+      affinity:
+        podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: run
+                operator: In
+                values:
+                - nginx
   runner:
     constant:
       concurrency: {{ concurrency if not super_light else super_light_concurrency }}
@@ -19,6 +28,15 @@ subtasks:
   scenario:
     Kubernetes.create_and_delete_pod:
       image: {{ image_pause }}
+      affinity:
+        podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: run
+                operator: In
+                values:
+                - nginx
   runner:
     rps:
       rps: {{ concurrency if not super_light else super_light_concurrency }}
