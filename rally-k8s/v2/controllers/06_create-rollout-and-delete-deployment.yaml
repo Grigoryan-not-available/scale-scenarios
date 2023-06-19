@@ -6,6 +6,15 @@ subtasks:
   scenario:
     Kubernetes.create_rollout_and_delete_deployment:
       image: {{ image_busybox }}
+      affinity:
+        podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: run
+                operator: In
+                values:
+                - nginx
       replicas: 3
       command:
       - sleep
@@ -34,6 +43,15 @@ subtasks:
   scenario:
     Kubernetes.create_rollout_and_delete_deployment:
       image: {{ image_busybox }}
+      affinity:
+        podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: run
+                operator: In
+                values:
+                - nginx
       replicas: 3
       command:
       - sleep

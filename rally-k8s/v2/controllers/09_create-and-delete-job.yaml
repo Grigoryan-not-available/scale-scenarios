@@ -6,6 +6,15 @@ subtasks:
   scenario:
     Kubernetes.create_and_delete_job:
       image: {{ image_busybox }}
+      affinity:
+        podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: run
+                operator: In
+                values:
+                - nginx
       command:
       - echo
       - "SUCCESS"
@@ -26,6 +35,15 @@ subtasks:
   scenario:
     Kubernetes.create_and_delete_job:
       image: {{ image_busybox }}
+      affinity:
+        podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: run
+                operator: In
+                values:
+                - nginx
       command:
       - echo
       - "SUCCESS"
