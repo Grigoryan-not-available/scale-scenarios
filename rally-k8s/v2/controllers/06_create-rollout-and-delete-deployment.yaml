@@ -11,10 +11,10 @@ subtasks:
         requiredDuringSchedulingIgnoredDuringExecution:
         - labelSelector:
             matchExpressions:
-            - key: run
-                operator: In
-                values:
-                - nginx
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - rally
       replicas: 3
       command:
       - sleep
@@ -48,10 +48,10 @@ subtasks:
         requiredDuringSchedulingIgnoredDuringExecution:
         - labelSelector:
             matchExpressions:
-            - key: run
-                operator: In
-                values:
-                - nginx
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - rally
       replicas: 3
       command:
       - sleep

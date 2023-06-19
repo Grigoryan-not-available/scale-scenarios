@@ -11,10 +11,10 @@ subtasks:
         requiredDuringSchedulingIgnoredDuringExecution:
         - labelSelector:
             matchExpressions:
-            - key: run
-                operator: In
-                values:
-                - nginx
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - rally
   runner:
     constant:
       concurrency: {{ concurrency if not super_light else super_light_concurrency }}
@@ -33,10 +33,10 @@ subtasks:
         requiredDuringSchedulingIgnoredDuringExecution:
         - labelSelector:
             matchExpressions:
-            - key: run
-                operator: In
-                values:
-                - nginx
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - rally
   runner:
     rps:
       rps: {{ concurrency if not super_light else super_light_concurrency }}

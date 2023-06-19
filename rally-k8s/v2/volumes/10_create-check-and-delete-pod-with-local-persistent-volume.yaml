@@ -15,10 +15,10 @@ subtasks:
         requiredDuringSchedulingIgnoredDuringExecution:
         - labelSelector:
             matchExpressions:
-            - key: run
-                operator: In
-                values:
-                - nginx
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - rally
       mount_path: /opt/check
       check_cmd:
       - ls
@@ -51,10 +51,10 @@ subtasks:
         requiredDuringSchedulingIgnoredDuringExecution:
         - labelSelector:
             matchExpressions:
-            - key: run
-                operator: In
-                values:
-                - nginx
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - rally
       mount_path: /opt/check
       check_cmd:
       - ls
