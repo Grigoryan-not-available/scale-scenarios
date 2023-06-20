@@ -26,6 +26,15 @@ subtasks:
         access_modes:
         - ReadWriteOnce
       image: gcr.io/google-samples/hello-go-gke:1.0
+      affinity:
+        podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - rally
       mount_path: /opt/check
       check_cmd:
       - ls
@@ -69,6 +78,15 @@ subtasks:
         access_modes:
         - ReadWriteOnce
       image: gcr.io/google-samples/hello-go-gke:1.0
+      affinity:
+        podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - rally
       mount_path: /opt/check
       check_cmd:
       - ls

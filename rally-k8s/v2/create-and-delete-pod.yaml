@@ -6,6 +6,18 @@ subtasks:
   scenario:
     Kubernetes.create_and_delete_pod:
       image: {{ image_pause }}
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                  - rally
+              topologyKey: kubernetes.io/hostname
+              namespaceSelector: {}
   runner:
     rps:
       rps: 2

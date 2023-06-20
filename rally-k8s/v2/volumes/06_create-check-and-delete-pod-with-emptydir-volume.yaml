@@ -6,6 +6,15 @@ subtasks:
   scenario:
     Kubernetes.create_and_delete_pod_with_emptydir_volume:
       image: {{ image_busybox }}
+      affinity:
+        podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - rally
       command:
       - sleep
       - "3600"
@@ -31,6 +40,15 @@ subtasks:
   scenario:
     Kubernetes.create_and_delete_pod_with_emptydir_volume:
       image: {{ image_busybox }}
+      affinity:
+        podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - rally
       command:
       - sleep
       - "3600"
