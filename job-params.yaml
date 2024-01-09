@@ -13,7 +13,7 @@
   flavor: "m1.nano"
   glance_image_url: "http://download.cirros-cloud.net/0.3.5/cirros-0.3.5-x86_64-disk.img"
 
-  image_pause: "mirantis.azurecr.io/lcm/docker/ucp-pause:3.5.5"
+  image_pause: "mirantis.azurecr.io/lcm/docker/ucp-pause:3.7.3"
   image_busybox: "mirantis.azurecr.io/general/external/docker.io/library/busybox:1.32.0"
 
   # grafana/elastic
